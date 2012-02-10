@@ -889,12 +889,14 @@ function Test(options) {
 
     var test = this;
     process.on('beforeExit', function() {
-        try {
-            test.emit('exit');
-        } catch (err) {
-            test.failure(err);
-        }
-        test.report();
+		setTimeout(function() {
+	        try {
+	            test.emit('exit');
+	        } catch (err) {
+	            test.failure(err);
+	        }
+	        test.report();
+		}, 0);
     });
 }
 
